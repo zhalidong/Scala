@@ -9,6 +9,7 @@ object WordCount {
 
         val mapwords: Map[String, Int] = groupword.map(s=>(s._1,s._2.length))
 
-
+        val result = mapwords.toList.sortBy(s=>s._2)
+        result.foreach((x)=>println(x))
     }
 }
