@@ -2,6 +2,8 @@ package day05
 
 import java.io.{BufferedReader, File, FileReader}
 
+import scala.io.Source
+
 class RichFile(file:File){
     /**
       * 返回文件的记录行数
@@ -75,6 +77,16 @@ object ScalaImplicit {
     //定义了一个隐式方法 将file类型变成RichFile类型
     implicit  def file2RichFile(file:File) = new RichFile(file)
 
+
+    //隐式类 - 只能在静态对象使用
+    implicit class FileRead(file:File){
+
+        def read=Source.fromFile(file).mkString
+
+    }
+
+
+
     def main(args: Array[String]): Unit = {
 
         /**
@@ -95,7 +107,7 @@ object ScalaImplicit {
         val file = new File("C:\\Users\\Administrator\\Desktop\\java进度.txt")
 
         import MyImpicits._
-        println("count= "+file.count())
+        //println("count= "+file.count())
 
     }
 
